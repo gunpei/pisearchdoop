@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC
+ "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN"
+ "http://getahead.ltd.uk/dwr/dwr20.dtd">
+
+<dwr>
+  <allow>
+
+	<!-- (1)リモートオブジェクトの登録 -->
+    <create creator="new" javascript="JobProgressService" scope="session">
+      <param name="class" value="jp.co.valuenet.pisearchdoop.dwr.JobProgressService"/>
+    </create>
+
+    <!-- (2)converterの設定 -->
+    <convert converter="bean" match="jp.co.valuenet.pisearchdoop.stab.Stab_JobProgress" />
+    <convert converter="bean" match="jp.co.valuenet.pisearchdoop.stab.Stab_Answer" />
+  </allow>
+</dwr>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+
+	<welcome-file-list>
+  		<welcome-file>/html/pisearchdoop.html</welcome-file>
+	</welcome-file-list>
+
+  	<servlet>
+		<servlet-name>MainServlet</servlet-name>
+		<servlet-class>jp.co.valuenet.pisearchdoop.servlet.MainServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>MainServlet</servlet-name>
+		<url-pattern>/MainServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+    	<servlet-name>dwr-invoker</servlet-name>
+   	 	<servlet-class>
+      		org.directwebremoting.servlet.DwrServlet
+    	</servlet-class>
+        	<load-on-startup>1</load-on-startup>
+        <init-param>
+    		<param-name>crossDomainSessionSecurity</param-name>
+    		<param-value>false</param-value>
+  		</init-param>
+  		<init-param>
+      		<!-- (1)デバッグモードの有効化 -->
+      		<param-name>debug</param-name>
+      		<param-value>true</param-value>
+    	</init-param>
+  	</servlet>
+
+  	<servlet-mapping>
+    	<servlet-name>dwr-invoker</servlet-name>
+   		<!-- (1)DwrServletからJavaScriptを自動生成するための設定 -->
+    	<url-pattern>/dwr/*</url-pattern>
+  	</servlet-mapping>
+
+</web-app>

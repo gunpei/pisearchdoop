@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>PiSearchDoop</title>
+
+<!-- 桃太郎サーバー -->
+<!-- リモートオブジェクトのインタフェースを取得する -->
+<script type="text/javascript"
+	src="http://localhost:8080/pisearchdoop/dwr/interface/JobProgressService.js">
+</script>
+<!-- DWRから提供されている共通JavaScriptの読み込み -->
+<script type="text/javascript" src="http://localhost:8080/pisearchdoop/dwr/engine.js"> </script>
+<script type="text/javascript" src="http://localhost:8080/pisearchdoop/dwr/util.js"> </script>
+
+<!-- ファイルサーバー  -->
+<!-- cssファイル読み込み -->
+<!-- ライブラリ -->
+<link rel="stylesheet" type="text/css" href="css/jquery.easy-pie-chart.css">
+<!-- 作成したcssファイル -->
+<link rel="stylesheet" href="css/pisearchdoop.css" type="text/css" />
+<link rel="stylesheet" href="css/tablesorter.css" type="text/css" />
+
+<!-- jsファイル読み込み -->
+<!-- ライブラリ -->
+<script type="text/javascript" src="js/jquery-2.0.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.easy-pie-chart.js"></script>
+<script type="text/javascript" src="js/jquery.tablesorter.min.js"></script>
+<script type="text/javascript" src="js/footerFixed.js"></script>
+<!-- 作成したjsファイル -->
+<script type="text/javascript" src="js/pisearchdoop.js"> </script>
+
+</head>
+
+<body onload="init()">
+
+	<!-- HEADER -->
+	<div id="header">
+		<!-- wrapper-header -->
+		<div class="wrapper">
+			<img id="logo" src="img/logo.png" alt="HadoopDemo" />
+		</div>
+		<!-- ENDS wrapper-header -->
+	</div>
+	<!-- ENDS HEADER -->
+
+	<!-- GRADATION -->
+	<div id="gradation">
+	</div>
+	<!-- ENDS GRADATION -->
+
+	<div id="mainFrame">
+		<div id="pisearchField">
+
+			<!-- 見出し -->
+			<div id="captionField">
+				<h2>円周率検索<span> ~ using Hadoop ~ </span></h2>
+
+			</div>
+
+			<!-- テキストボックス・ボタン -->
+			<div id="inputField">
+				Key：<input type="text" id="key" required /> <input type="button"
+					value="検索" onclick="findBtn()" id="findBtn" /> <input
+					type="button" value="クリア" onclick="clearBtn()" />
+			</div>
+
+			<!-- ステータス -->
+			<div id="statusField">
+				Status：<span id="status"></span>
+			</div>
+
+			<!-- loading -->
+			<div id="loadingField">
+				<img id="loading" src="img/loading_blank.png">
+			</div>
+
+			<!-- 開始・終了時刻 -->
+			<div id="timeField">
+				<div id="start">
+					StartTime：<span id="startDate"></span>
+				</div>
+				<div id="finish">
+					FinishTime：<span id="finishDate"></span>
+				</div>
+			</div>
+
+			<!-- 検索結果 -->
+			<div id="tableField">
+				<div id="tableheader">
+					<div id="tablecontent">
+						<table id="tablesorter">
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>Digits</th>
+									<th>Comment</th>
+								</tr>
+							</thead>
+							<tbody id="tablebody">
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<!-- headline -->
+			<div id="headline">
+				<span class="main">Hadoopを使用して円周率から数値を検索</span>
+				<span class="sub">ソースコードはGitHubからダウンロードできます。</span>
+				<a href="https://github.com/VSC3BU/pisearchdoop" target="_blank"
+					id="link" class="link-button-big"><span>GitHub</span></a>
+			</div>
+			<!-- ENDS headline -->
+
+		</div>
+	</div>
+
+	<!-- Bottom -->
+	<div id="footer">
+		<!-- wrapper-bottom -->
+		<div class="wrapper">
+			<div id="footer-text">
+				2014 Solkai3 Project <a href="http://www.valuenet.co.jp"target="_blank">ValueSoftware</a>
+			</div>
+		</div>
+		<!-- ENDS wrapper-bottom -->
+	</div>
+	<!-- ENDS Bottom -->
+
+</body>
+</html>

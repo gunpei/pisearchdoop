@@ -24,7 +24,7 @@ function findBtn() {
 		errorHandler: onError
 	});
 
-	$("#loading").attr('src', 'img/loading.gif');
+	$("#loading").attr('src', 'html/img/loading.gif');
 
 	document.getElementById("findBtn").disabled = true;
 
@@ -84,7 +84,7 @@ function setAnswer(bean){
 	//キャッシュ対策
 	$('#tablesorter').trigger("update");
 
-	$("#loading").attr('src', 'img/loading_blank.png');
+	$("#loading").attr('src', 'html/img/loading_blank.png');
 }
 
 
@@ -132,7 +132,7 @@ function clearBtn() {
 	$('#startDate').empty();
 	$('#finishDate').empty();
 	document.getElementById("findBtn").disabled = false;
-	$("#loading").attr('src', 'img/loading_blank.png');
+	$("#loading").attr('src', 'html/img/loading_blank.png');
 	createTable();
 }
 
@@ -171,8 +171,7 @@ $(document).ready(function(){
 	if(isSupported(['chrome','firefox','safari'])){
 		alert("対応している")
 	}else{
-		alert("対応していない")
-		history.back();
+		location.href="html/incompatible.html";
 	}
 
 	createTable();

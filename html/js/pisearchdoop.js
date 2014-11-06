@@ -2,6 +2,18 @@
 //タイマー
 var refreshTimer;
 
+
+//テスト用
+function waitBtn(){
+	alert("現在、他のユーザーが検索処理を実行しています。" +
+			"\n当サイトではHadoopの処理パフォーマンスを保つ為、" +
+			"一度に複数の処理を受け付けておりません。" +
+			"\n検索処理が開始されるまでしばらくお待ち下さい。")
+	dwr.util.setValue("status", "検索処理待ち");
+	$("#loading").attr('src', 'html/img/loading.gif');
+	setTimeout("findBtn()", 5000);
+}
+
 //検索開始
 function findBtn() {
 
@@ -16,7 +28,6 @@ function findBtn() {
 	}
 
 	abortRefresh();
-
 
 	//リモートオブジェクトの実行（第二引数はコールバック関数）
 	JobProgressService.startPiSearch({

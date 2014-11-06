@@ -18,7 +18,8 @@ public class MainServlet extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/jsp/test.jsp");
+		System.out.print("test");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("html/pisearchdoop.html");
 		dispatcher.forward(req, res);
 	}
 

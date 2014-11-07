@@ -23,17 +23,38 @@ public class MainServlet extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 
+		char actionId;
+		if(req.getParameter("actionId") == null){
+			actionId = 'F';
+		}else{
+			actionId = req.getParameter("actionId").charAt(0);
+		}
+
 		String forwardPage = "html/pisearchdoop.html";
 
-		//対応するブラウザを設定する
-		List<Browser> browserList = new ArrayList<Browser>();
-		browserList.add(Browser.BROWSER_CHROME);
-		browserList.add(Browser.BROWSER_FIREFOX);
-		browserList.add(Browser.BROWSER_SAFARI);
+		switch(actionId){
 
-		//使用するブラウザが対応しているかチェック
-		if(!BrowserChecker.checkBrowser(browserList, req)){
-			forwardPage = "html/incompatible.html";
+			case 'F':
+
+				//対応するブラウザを設定する
+				List<Browser> browserList = new ArrayList<Browser>();
+				browserList.add(Browser.BROWSER_CHROME);
+				browserList.add(Browser.BROWSER_FIREFOX);
+				browserList.add(Browser.BROWSER_SAFARI);
+
+				//使用するブラウザが対応しているかチェック
+				if(!BrowserChecker.checkBrowser(browserList, req)){
+					forwardPage = "html/incompatible.html";
+				}
+
+				break;
+
+			case 'S':
+
+				System.out.println("status");
+
+				break;
+
 		}
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher(forwardPage);

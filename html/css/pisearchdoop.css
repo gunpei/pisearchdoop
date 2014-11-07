@@ -180,49 +180,35 @@ h6{ font-size: 20px; }
 	width: 100%;
 }
 
-#pisearchField{
+#pisearch{
 	width: 906px;
-	height: 530px;
+	height: 320px;
 	margin: 0 auto;
 	padding-top:30px;
 }
 
-#captionField {
+#caption {
 
 }
 
-#captionField span{
+#caption span{
 	font-size: 18px;
 
 }
 
-#inputField {
+#find {
 	margin-top:5px;
 }
 
-#statusField {
-	float: left;
-	margin-top:20px;
+#findComment {
+	margin-top:15px;
 }
 
-#loadingField {
-	margin-top:8px;
+#statusComment {
+	margin-top:40px;
 }
 
-#timeField {
-	margin-top:17px;
-
+#status {
+	margin-top:15px;
 }
 
-#start {
-	float: left;
-	width : 30%;
-}
-
-#finish {
-	width :auto;
-}
-
-#tableField {
-	margin-top: 20px;
-}

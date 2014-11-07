@@ -50,58 +50,33 @@
 	<!-- ENDS GRADATION -->
 
 	<div id="mainFrame">
-		<div id="pisearchField">
+		<div id="pisearch">
 
 			<!-- 見出し -->
-			<div id="captionField">
-				<h2>円周率検索<span> ~ using Hadoop ~ </span></h2>
+			<div id="caption">
+				<h1>円周率検索<span> ~ using Hadoop ~ </span></h1>
 
 			</div>
 
 			<!-- テキストボックス・ボタン -->
-			<div id="inputField">
-				Key：<input type="text" id="key" required /> <input type="button"
-					value="検索" onclick="findBtn()" id="findBtn" /> <input
-					type="button" value="クリア" onclick="clearBtn()" />
+			<div id="find">
+				Key：<input type="text" id="key" required />
+				<input type="button" value="検索" onclick="find()" id="findBtn" />
+<!-- 				<input type="button" value="クリア" onclick="clear()" /> -->
+			</div>
+
+			<div id="findComment">
+				検索したい数値を入力し検索ボタンを押すと、検索IDが発行され検索が開始されます。
+			</div>
+
+			<div id="statusComment">
+				<h6>・検索IDをお持ちの方は下記に入力すると、検索状況を参照することができます。</h6>
 			</div>
 
 			<!-- ステータス -->
-			<div id="statusField">
-				Status：<span id="status"></span>
-			</div>
-
-			<!-- loading -->
-			<div id="loadingField">
-				<img id="loading" src="html/img/loading_blank.png">
-			</div>
-
-			<!-- 開始・終了時刻 -->
-			<div id="timeField">
-				<div id="start">
-					StartTime：<span id="startDate"></span>
-				</div>
-				<div id="finish">
-					FinishTime：<span id="finishDate"></span>
-				</div>
-			</div>
-
-			<!-- 検索結果 -->
-			<div id="tableField">
-				<div id="tableheader">
-					<div id="tablecontent">
-						<table id="tablesorter">
-							<thead>
-								<tr>
-									<th>No</th>
-									<th>Digits</th>
-									<th>Comment</th>
-								</tr>
-							</thead>
-							<tbody id="tablebody">
-							</tbody>
-						</table>
-					</div>
-				</div>
+			<div id="status">
+				検索ID：<input type="text" id="findId" required />
+				<input type="button" value="検索状況参照" onclick="statusOpen()" id="statusBtn" />
 			</div>
 
 			<!-- headline -->
@@ -127,6 +102,11 @@
 		<!-- ENDS wrapper-bottom -->
 	</div>
 	<!-- ENDS Bottom -->
+
+	<form name="statusForm" action="MainServlet" method="post" target="statusWindow">
+		<input type="hidden" value="S" name="actionId">
+		<input type="hidden" value="" name="findId">
+	</form>
 
 </body>
 </html>

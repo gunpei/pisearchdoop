@@ -1,9 +1,6 @@
 
-//タイマー
-var refreshTimer;
-
 //検索開始
-function findBtn() {
+function find() {
 
 	//入力チェック
 	if($('#key').val() == ""){
@@ -15,153 +12,32 @@ function findBtn() {
 		return;
 	}
 
-	abortRefresh();
+	$("#findComment").html("検索処理を受け付けました。検索IDは「12345678」です。");
 
+	$('#findId').val("12345678");
 
-	//リモートオブジェクトの実行（第二引数はコールバック関数）
-	JobProgressService.startPiSearch({
-		callback: setProgress,
-		errorHandler: onError
-	});
-
-	$("#loading").attr('src', 'html/img/loading.gif');
-
-	document.getElementById("findBtn").disabled = true;
+//	document.getElementById("findBtn").disabled = true;
 
 }
 
-//検索状況取得
-function load() {
-
-	abortRefresh();
-
-	// リモートオブジェクトの実行（第二引数はコールバック関数）
-	JobProgressService.getJobProgress({
-		callback: setProgress,
-		errorHandler: onError
-	});
-}
-
-//進捗状況を画面に表示
-//コールバック関数の引数でリモートオブジェクトのreturn値を取得
-function setProgress(bean) {
-
-	// HTMLへデータを設定
-	dwr.util.setValue("status", bean.status);
-	dwr.util.setValue("startDate", bean.startDate);
-	dwr.util.setValue("finishDate", bean.finishDate);
-
-	if(bean.finishDate==""){
-		refreshTimer = setTimeout(load, 500);
-	}else{
-		JobProgressService.getAnswer({
-			callback: setAnswer,
-			errorHandler: onError
-		});
-	}
-
-}
-
-//検索結果表示する
-function setAnswer(bean){
-
-	//行を全て削除
-	$("#tablesorter > tbody").empty();
-
-	var ansList = bean.answerList;
-
-	for ( var i = tablebody.rows.length, len = ansList.length; i < len; i++) {
-		var ans = ansList[i];
-		printData(ans,i);
-	}
-
-	//ソート機能を削除
-	$('#tablesorter th').unbind();
-	//ソート機能付きテーブルを再生成
-	$("#tablesorter").tablesorter({
-		widgets: ['zebra']
-	});
-	//キャッシュ対策
-	$('#tablesorter').trigger("update");
-
-	$("#loading").attr('src', 'html/img/loading_blank.png');
-}
-
-
-
-//取得したデータを反映させる
-function printData(ans,no) {
-
-	var table = document.getElementById("tablebody");
-
-	var row = table.insertRow(-1);
-
-	var cell1 = row.insertCell(-1);
-	var cell2 = row.insertCell(-1);
-	var cell3 = row.insertCell(-1);
-
-	cell1.appendChild(document.createTextNode(no+1));
-	cell2.appendChild(document.createTextNode(ans.index));
-	cell3.appendChild(document.createTextNode(ans.coment));
-
-}
-
-//エラーが発生した際呼び出される関数
-function onError(errMsg) {
-	abortRefresh();
-	alert(errMsg);
-	alert("サーバー側でエラーが発生しました。");
-	clearBtn();
-}
-
-//リフレッシュを中止する
-function abortRefresh() {
-	if (refreshTimer) {
-		clearTimeout(refreshTimer);
-		refreshTimer = null;
-	}
-}
 
 //クリア
-function clearBtn() {
+function clear() {
 
-	abortRefresh();
+	alert("aa");
 
-	$('#key').val("");
-	$('#status').empty();
-	$('#startDate').empty();
-	$('#finishDate').empty();
+	$('#fintId').val("");
 	document.getElementById("findBtn").disabled = false;
-	$("#loading").attr('src', 'html/img/loading_blank.png');
-	createTable();
 }
 
-//初期表示のテーブルを生成する。
-function createTable(){
+function statusOpen() {
 
-	//行を全て削除
-	$("#tablesorter > tbody").empty();
-	$('#tablesorter th').unbind();
+	window.open('about:blank', 'statusWindow', 'width=600, height=600, menubar=no, toolbar=no, scrollbars=yes');
 
-	for(var i = 0 , len = 16; i < len; i++){
-
-		var table = document.getElementById("tablebody");
-		var row = table.insertRow(-1);
-		var cell1 = row.insertCell(-1);
-		var cell2 = row.insertCell(-1);
-		var cell3 = row.insertCell(-1);
-
-		cell1.appendChild(document.createTextNode("　"));
-		cell2.appendChild(document.createTextNode("　"));
-		cell3.appendChild(document.createTextNode("　"));
-	}
-
-	//ソート機能付きテーブルを生成
-	$("#tablesorter").tablesorter({
-		widgets: ['zebra']
-	});
-
+	document.statusForm.submit();
 }
+
+
 
 /**
  * 画面ロード時に実行する

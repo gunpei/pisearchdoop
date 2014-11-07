@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>PiSearchDoop</title>
+
+<!-- 桃太郎サーバー -->
+<!-- リモートオブジェクトのインタフェースを取得する -->
+<script type="text/javascript"
+	src="http://localhost:8080/pisearchdoop/dwr/interface/JobProgressService.js">
+</script>
+<!-- DWRから提供されている共通JavaScriptの読み込み -->
+<script type="text/javascript" src="http://localhost:8080/pisearchdoop/dwr/engine.js"> </script>
+<script type="text/javascript" src="http://localhost:8080/pisearchdoop/dwr/util.js"> </script>
+
+<!-- ファイルサーバー  -->
+<!-- cssファイル読み込み -->
+<!-- ライブラリ -->
+<link rel="stylesheet" type="text/css" href="html/css/jquery.easy-pie-chart.css">
+<!-- 作成したcssファイル -->
+<link rel="stylesheet" href="html/css/pisearchstatus.css" type="text/css" />
+<link rel="stylesheet" href="html/css/tablesorter.css" type="text/css" />
+
+<!-- jsファイル読み込み -->
+<!-- ライブラリ -->
+<script type="text/javascript" src="html/js/jquery-2.0.2.min.js"></script>
+<script type="text/javascript" src="html/js/jquery.easy-pie-chart.js"></script>
+<script type="text/javascript" src="html/js/jquery.tablesorter.min.js"></script>
+<script type="text/javascript" src="html/js/footerFixed.js"></script>
+<!-- 作成したjsファイル -->
+<script type="text/javascript" src="html/js/pisearchstatus.js"> </script>
+
+</head>
+
+<body>
+
+	<div id="mainFrame">
+		<div id="pisearchField">
+
+			<!-- 見出し -->
+			<div id="captionField">
+				<h2>検索状況</h2>
+
+			</div>
+
+			<!-- テキストボックス・ボタン -->
+			<div id="inputField">
+				検索ID：12345678　　検索値：54321
+			</div>
+
+			<!-- ステータス -->
+			<div id="statusField">
+				Status：<span id="status"></span>
+			</div>
+
+			<!-- loading -->
+			<div id="loadingField">
+				<img id="loading" src="html/img/loading_blank.png">
+			</div>
+
+			<!-- 開始・終了時刻 -->
+			<div id="timeField">
+				<div id="start">
+					StartTime：<span id="startDate"></span>
+				</div>
+				<div id="finish">
+					FinishTime：<span id="finishDate"></span>
+				</div>
+			</div>
+
+			<!-- 検索結果 -->
+			<div id="tableField">
+				<div id="tableheader">
+					<div id="tablecontent">
+						<table id="tablesorter">
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>Digits</th>
+									<th>Comment</th>
+								</tr>
+							</thead>
+							<tbody id="tablebody">
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</body>
+</html>

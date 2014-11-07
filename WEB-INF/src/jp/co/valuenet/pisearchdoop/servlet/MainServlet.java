@@ -51,7 +51,7 @@ public class MainServlet extends HttpServlet {
 
 			case 'S':
 
-				System.out.println("status");
+				forwardPage = "html/pisearchstatus.html";
 
 				break;
 

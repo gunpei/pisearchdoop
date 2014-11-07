@@ -32,7 +32,7 @@ function clear() {
 
 function statusOpen() {
 
-	window.open('about:blank', 'statusWindow', 'width=600, height=600, menubar=no, toolbar=no, scrollbars=yes');
+	window.open('about:blank', 'statusWindow', 'width=800, height=500, menubar=no, toolbar=no, scrollbars=yes');
 
 	document.statusForm.submit();
 }
